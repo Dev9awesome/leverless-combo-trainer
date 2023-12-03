@@ -21,6 +21,45 @@ SYSTEM_THREAD(DISABLED);
 // View logs with CLI using 'particle serial monitor --follow'
 SerialLogHandler logHandler(LOG_LEVEL_INFO);
 
+void changeLED(int pin){
+  int ledPos = -1;
+  if(pin == leftPin){
+    ledPos = 0;
+  }
+  else if(pin == downPin){
+    ledPos = 1;
+  }
+  
+  else if(pin == rightPin){
+    ledPos = 2;
+  }
+  
+  else if(pin == upPin){
+    ledPos = 3;
+  }
+  
+  else if(pin == Apin){
+    ledPos = 5;
+  }
+  
+  else if(pin == Bpin){
+    ledPos = 6;
+  }
+
+  else if(pin == Cpin){
+    ledPos = 7;
+  }
+  
+  if(digitalRead(pin)){
+    ledMatrix.drawPixel(ledPin, 0, ledMatrix.Color(128, 0, 0));
+  }
+  else{
+    ledMatrix.drawPixel(ledPin, 0, ledMatrix.Color(0, 0, 0));
+  }
+
+
+}
+
 //Directional buttons
 int leftPin = D0;
 int downPin = D1;
@@ -41,16 +80,19 @@ void setup() {
   ledMatrix.begin();
   ledMatrix.show();
 
-  ledMatrix.drawPixel(0, 0, ledMatrix.Color(128, 0, 0));
+  // ledMatrix.drawPixel(0, 0, ledMatrix.Color(128, 0, 0));
 
 }
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
-  // The core of your code will likely live here.
+  changeLED(leftPin);
+  changeLED(downPin);
+  changeLED(rightPin);
+  changeLED(upPin);
+  changeLED(Apin);
+  changeLED(Bpin);
+  changeLED(Cpin);
 
-  // Example: Publish event to cloud every 10 seconds. Uncomment the next 3 lines to try it!
-  // Log.info("Sending Hello World to the cloud!");
-  // Particle.publish("Hello world!");
-  // delay( 10 * 1000 ); // milliseconds and blocking - see docs for more info!
+  
 }

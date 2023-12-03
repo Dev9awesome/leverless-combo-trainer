@@ -157,18 +157,18 @@ void loop()
   }
 
   // Right Button
-  // Right LED is at (1, 1) 
+  // Right LED is at (2, 1) 
   int rightTimer = rightSequence[currRight];
 
   if (rightTimer != -1 && rightTimer >= millis())
   {
     if (rightState)
     {
-      ledMatrix.drawPixel(1, 1, ledMatrix.Color(0, 0, 0));
+      ledMatrix.drawPixel(2, 1, ledMatrix.Color(0, 0, 0));
     }
     else
     {
-      ledMatrix.drawPixel(1, 1, ledMatrix.Color(128, 0, 0));
+      ledMatrix.drawPixel(2, 1, ledMatrix.Color(128, 0, 0));
     }
     rightState = -rightState;
     currLeft++;
@@ -180,18 +180,18 @@ void loop()
   }
 
   // Down Button
-  // Down LED is at (2, 1) 
+  // Down LED is at (1, 1) 
   int downTimer = downSequence[currDown];
 
   if (downTimer != -1 && downTimer >= millis())
   {
     if (downState)
     {
-      ledMatrix.drawPixel(2, 1, ledMatrix.Color(0, 0, 0));
+      ledMatrix.drawPixel(1, 1, ledMatrix.Color(0, 0, 0));
     }
     else
     {
-      ledMatrix.drawPixel(2, 1 ledMatrix.Color(128, 0, 0));
+      ledMatrix.drawPixel(1, 1 ledMatrix.Color(128, 0, 0));
     }
     downState = -downState;
     currUp++;
